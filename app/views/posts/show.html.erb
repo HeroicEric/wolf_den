@@ -4,12 +4,18 @@
 
 <p><%= @post.content %></p>
 
+<% if @omments.nil? %>
+  <%= "There aren't any comments yet." %>
+<% end %>
+
+<%= render partial: 'posts/comment', collection: @comments %>
+
 <h4>Add a Comment</h4>
 <%= form_for([@post, @comment]) do |f| %>
   <% if @comment.errors.any? %>
     <ul>
       <% @comment.errors.full_messages.each do |error| %>
-        <li><%= error %></li> 
+        <li><%= error %></li>
       <% end %>
     </ul>
   <% end %>
