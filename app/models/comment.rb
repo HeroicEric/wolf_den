@@ -6,4 +6,5 @@ class Comment < ActiveRecord::Base
   validates_presence_of :post
 
   validates_email_format_of :email
+
 end
