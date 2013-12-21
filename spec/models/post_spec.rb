@@ -10,8 +10,10 @@ describe Post do
   it { should have_valid(:content).when("asdasdasdasd", "Awesome stuff here") }
   it { should_not have_valid(:content).when(nil, "") }
 
+
   # shoulda matcher
   it { should validate_presence_of :title }
+  it { should validate_presence_of :user_id }
 
   describe "john should approve of our post titles" do
     it "allows approved titles" do
