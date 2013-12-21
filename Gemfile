@@ -41,6 +41,7 @@ gem 'foundation-rails'
 gem 'validates_email_format_of'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'pry-rails'
   gem 'capybara'
   gem 'launchy'

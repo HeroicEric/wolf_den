@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'database_cleaner'
 
 describe User do
 
@@ -49,4 +50,28 @@ describe User do
     it { should_not be_valid }
   end
 
+  describe "signup page" do
+    before { visit signup_path }
+
+   let(:submit) { "Create my account" }
+
+    describe "with invalid information" do
+      it "should not create a users" do
+        expect { click_button ubmit }.not_to change(User, :count)
+      end
+    end
+
+    describe "with valid information" do
+      before do
+        fill_in "Name", with: "Example User"
+        fill_in "Email", with: "user@example.com"
+        fill_in "Password", with: "foobar"
+        fill_in "Confirmation", with: "foobar"
+      end
+
+      it "create a user" do
+        expect { click_button submit }.to change(User, :count).by(1)
+      end
+      end
+  end
 end
