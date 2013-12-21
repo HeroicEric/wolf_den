@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20131220153750) do
     t.text     "content",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "published_at", null: false
+    t.datetime "published_at"
   end
 
 end

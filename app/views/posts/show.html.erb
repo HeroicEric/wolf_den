@@ -4,11 +4,11 @@
 
 <p><%= @post.content %></p>
 
-<% if @comments.nil? %>
+<% if @post.comments.empty? %>
   <%= "There aren't any comments yet." %>
+<% else %>
+  <%= render partial: 'posts/comment', collection: @comments %>
 <% end %>
-
-<%= render partial: 'posts/comment', collection: @comments %>
 
 <h4>Add a Comment</h4>
 <%= form_for([@post, @comment]) do |f| %>

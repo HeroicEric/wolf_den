@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments
   end
 
   def new
@@ -15,6 +14,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.published_at = Time.now
 
     if @post.save
       redirect_to '/posts', notice: "Post saved successfully."
@@ -39,6 +39,6 @@ class PostsController < ApplicationController
 
   protected
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :published_at)
   end
 end
