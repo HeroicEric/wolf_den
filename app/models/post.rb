@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
 
   validates_presence_of :title
   validates_presence_of :content
+  validates_presence_of :user_id
 
   validate :john_approves_of_title
 
