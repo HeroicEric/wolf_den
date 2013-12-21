@@ -4,12 +4,25 @@
 
 <p><%= @post.content %></p>
 
+<% if @post.comments.empty? %>
+  <p>There aren't any comments yet.</p>
+<% else %>
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li>
+        <%= comment.email %>
+        <%= comment.body %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h4>Add a Comment</h4>
 <%= form_for([@post, @comment]) do |f| %>
   <% if @comment.errors.any? %>
     <ul>
       <% @comment.errors.full_messages.each do |error| %>
-        <li><%= error %></li> 
+        <li><%= error %></li>
       <% end %>
     </ul>
   <% end %>
