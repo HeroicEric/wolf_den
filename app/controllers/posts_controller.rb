@@ -14,6 +14,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.published_at = Time.now
 
     if @post.save
       redirect_to '/posts', notice: "Post saved successfully."
@@ -36,8 +37,8 @@ class PostsController < ApplicationController
     end
   end
 
-  protected 
+  protected
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :published_at)
   end
 end
