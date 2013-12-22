@@ -36,6 +36,8 @@ gem 'foundation-rails'
 
 gem 'validates_email_format_of'
 
+gem 'devise'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'capybara'
