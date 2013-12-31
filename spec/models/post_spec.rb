@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Post do
   it { should have_many(:comments).dependent(:destroy) }
+  it { should belong_to(:user) }
 
   # valid_attribute
   it { should have_valid(:title).when("John", "M00n") }
