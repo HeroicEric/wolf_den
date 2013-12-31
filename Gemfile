@@ -37,6 +37,8 @@ gem 'foundation-rails'
 
 gem 'validates_email_format_of'
 
+gem 'devise'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'capybara'
@@ -45,6 +47,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'valid_attribute'
   gem 'shoulda-matchers'
+  gem 'quiet_assets'
 end
 
 group :test do
