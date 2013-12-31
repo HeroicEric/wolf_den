@@ -32,13 +32,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update_attributes(post_params)
-      redirect_to posts_path, notice: "Post saved successfully."
+      redirect_to posts_path, notice: "Post updated successfully."
     else
       render :edit
     end
   end
 
-  protected 
+  protected
   def post_params
     params.require(:post).permit(:title, :content)
   end
