@@ -13,7 +13,11 @@
 
   <body>
     <% if user_signed_in? %>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "delete_user_session" %>
+      <%= link_to 'Sign out', destroy_user_session_path,
+        method: :delete,
+        class: "delete_user_session" %>
+    <% else %>
+      <%= link_to 'Sign in', new_user_session_path %>
     <% end %>
 
     <% flash.each do |name, msg| %>
