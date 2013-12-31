@@ -19,11 +19,27 @@ feature "user views a user profile page" do
 
   scenario "User sees posts written by user" do 
     user = FactoryGirl.create(:user)
-    post1 = FactoryGirl.create(:post)
-    post2 = FactoryGirl.create(:post)
-    post3 = FactoryGirl.create(:post)
+    post1 = FactoryGirl.create(:post, user: user)
+    post2 = FactoryGirl.create(:post, user: user)
 
     visit user_path(user)
-    expect(page).to have_content(user.email)
+
+    expect(page).to have_content(post1.title)
+    expect(page).to have_content(post2.title)
+  end
+
+  scenario "User doesn't see posts written by another user" do 
+    user = FactoryGirl.create(:user)
+    post = FactoryGirl.create(:post)
+
+    visit user_path(user)
+
+    expect(page).to_not have_content(post.title)
+  end
+
+  scenario "user sees message that the user hasn't written any posts" do
+    user = FactoryGirl.create(:user)
+    visit user_path(user)
+    expect(page).to have_content "Lurker lurks but has not written any posts."
   end
 end

@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
     inverse_of: :post,
     dependent: :destroy
 
+  validates_presence_of :user
   validates_presence_of :title
   validates_presence_of :content
 
