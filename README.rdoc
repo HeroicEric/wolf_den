@@ -1,3 +1,0 @@
-Wolf Den Blog Platform
-
-Blogging platform developed by the Werewolf Mafia group at Launch Academy.
