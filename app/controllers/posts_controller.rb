@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new]
+
   def index
     @posts = Post.all
   end
@@ -13,10 +15,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to '/posts', notice: "Post saved successfully."
+      redirect_to posts_path, notice: "Post saved successfully."
     else
       render :new
     end
@@ -30,7 +32,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update_attributes(post_params)
-      redirect_to '/posts', notice: "Post saved successfully."
+      redirect_to posts_path, notice: "Post saved successfully."
     else
       render :edit
     end

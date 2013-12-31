@@ -1,0 +1,12 @@
+<h1><%= @user.email %></h1>
+
+<% if @user.posts.any? %>
+  <h3>User's Posts</h3>
+  <ul>
+    <% @user.posts.each do |post| %>
+      <li><%= link_to post.title, post_path(post) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Lurker lurks but has not written any posts.</p>
+<% end %>
