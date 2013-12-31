@@ -5,9 +5,16 @@
 <p><%= @post.content %></p>
 
 <% if @post.comments.empty? %>
-  <%= "There aren't any comments yet." %>
+  <p>There aren't any comments yet.</p>
 <% else %>
-  <%= render partial: 'posts/comment', collection: @post.comments %>
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li>
+        <%= comment.email %>
+        <%= comment.body %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
 
 <h4>Add a Comment</h4>

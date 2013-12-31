@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
@@ -36,6 +37,8 @@ gem 'foundation-rails'
 
 gem 'validates_email_format_of'
 
+gem 'devise'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'capybara'
@@ -44,6 +47,15 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'valid_attribute'
   gem 'shoulda-matchers'
+  gem 'quiet_assets'
+end
+
+group :test do
+  gem 'coveralls', require: false
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password

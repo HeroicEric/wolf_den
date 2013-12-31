@@ -1,8 +1,12 @@
 class Post < ActiveRecord::Base
+  belongs_to :user,
+    inverse_of: :posts
+
   has_many :comments,
     inverse_of: :post,
     dependent: :destroy
 
+  validates_presence_of :user
   validates_presence_of :title
   validates_presence_of :content
 
