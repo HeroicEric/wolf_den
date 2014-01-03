@@ -38,8 +38,8 @@ class PostsController < ApplicationController
     end
   end
 
-  protected 
+  protected
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :published_at)
   end
 end
