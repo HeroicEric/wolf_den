@@ -5,6 +5,9 @@
   <ul>
     <% @user.posts.each do |post| %>
       <li><%= link_to post.title, post_path(post) %></li>
+      <% if current_user == @user %>
+        <li><%= link_to "Edit", edit_post_path(post) %></li>
+        <% end %>
     <% end %>
   </ul>
 <% else %>
