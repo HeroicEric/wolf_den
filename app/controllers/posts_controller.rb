@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
 
     if @post.update_attributes(post_params)
-      redirect_to posts_path, notice: "Post saved successfully."
+      redirect_to posts_path, notice: "Post updated successfully."
     else
       render :edit
     end
