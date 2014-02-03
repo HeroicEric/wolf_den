@@ -41,3 +41,7 @@
 
   <%= f.submit "Save comment", class: "button" %>
 <% end %>
+
+<% if @post.user == current_user %>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+<% end %>
