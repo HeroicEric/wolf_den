@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!, only: [:new]
+  before_filter :authenticate_user!, only: [:new, :edit]
 
   def index
     @posts = Post.all
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
 
     if @post.update_attributes(post_params)
       redirect_to posts_path, notice: "Post saved successfully."
